@@ -12,7 +12,7 @@
       padding: 0;
     }
     .container {
-      width: 80%;
+      width: 95%;
       margin: 20px auto;
       text-align: center;
     }
@@ -20,20 +20,44 @@
       width: 100%;
       border-collapse: collapse;
       margin: 20px 0;
+      
     }
     table th, table td {
-      border: 1px solid #ccc;
-      padding: 10px;
+      border: 3px solid #4b4b4b;
+      padding: 11px;
       text-align: left;
+      font-size: 1rem;
+      font-weight: 600;
+      vertical-align: middle;
     }
     table th {
-      background-color: #f8f8f8;
+      background-color: #61c43a;
+    }
+    .true-circle {
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background-color: green;
+      margin: auto;
+    }
+    .false-circle {
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background-color: red;
+      margin: auto;
+    }
+    .header-cell {
+      background-color: #b3e0ff;
+      font-weight: bold;
+      color: #0056b3;
+      text-align: center;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Google Sheets Viewer</h1>
+    <h1>Planificación</h1>
     <table id="data-table">
       <!-- Contenido dinámico -->
     </table>
@@ -41,7 +65,7 @@
 
   <script>
     const sheetId = "1Vxos6DxnA54F_mXPX1WdiXzfx-CDYFWX-M7nnwNqpQ8"; // ID de la hoja
-    const sheetName = "Monolab%2FMarchesini"; // Nombre de la pestaña codificado
+    const sheetName = "PruebaJonas"; // Nombre de la pestaña codificado
     const apiKey = "AIzaSyDb5CuFLvb3YJLIPBaU1Gbs_y8oIURShLU"; // Reemplázalo con tu clave de API
 
     const fetchData = async () => {
@@ -55,19 +79,32 @@
           return;
         }
 
-        const rows = data.values; // Filas de datos de la API
+        const rows = data.values;
         const table = document.getElementById("data-table");
         table.innerHTML = ""; // Limpiar contenido
+
+        // Encuentra el número máximo de columnas para alinear celdas vacías
+        const maxColumns = rows.reduce((max, row) => Math.max(max, row.length), 0);
 
         rows.forEach((row, rowIndex) => {
           const tr = document.createElement("tr");
 
-          row.forEach((cell, colIndex) => {
+          // Rellenar celdas vacías hasta el número máximo de columnas
+          for (let colIndex = 0; colIndex < maxColumns; colIndex++) {
+            const cell = row[colIndex] || ""; // Usa un valor vacío si no hay datos
             const td = rowIndex === 0 ? document.createElement("th") : document.createElement("td");
-            td.textContent = cell || ""; // Inserta el texto de cada celda
+
+            // Comprobación de si el valor de la celda es TRUE o FALSE
+            if (cell === "TRUE") {
+              td.innerHTML = '<div class="true-circle"></div>'; // Circunferencia verde
+            } else if (cell === "FALSE") {
+              td.innerHTML = '<div class="false-circle"></div>'; // Circunferencia roja
+            } else {
+              td.textContent = cell; // Inserta el texto de la celda
+            }
 
             tr.appendChild(td);
-          });
+          }
 
           table.appendChild(tr);
         });
