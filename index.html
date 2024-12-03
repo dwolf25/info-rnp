@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Sheets Viewer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      width: 80%;
+      margin: 20px auto;
+      text-align: center;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    table th, table td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: left;
+    }
+    table th {
+      background-color: #f8f8f8;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Información en Tiempo Real</h1>
+    <table id="data-table">
+      <thead>
+        <tr>
+          <th>Columna 1</th>
+          <th>Columna 2</th>
+          <th>Columna 3</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Los datos dinámicos se llenarán aquí -->
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    const sheetId = "1Vxos6DxnA54F_mXPX1WdiXzfx-CDYFWX-M7nnwNqpQ8"; // Reemplaza con el ID de tu hoja
+    const apiKey = "AIzaSyB-hk6ZHrcL36gtGMmge61dVhXzWxvtheI"; // Reemplaza con tu clave de API
+
+    const fetchData = async () => {
+      try {
+        const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/Sheet1!A1:C100?key=${apiKey}`;
+        const response = await fetch(url);
+        const data = await response.json();
+
+        const rows = data.values;
+        const tbody = document.getElementById("data-table").querySelector("tbody");
+        tbody.innerHTML = ""; // Limpiar tabla
+
+        rows.forEach((row, index) => {
+          const tr = document.createElement("tr");
+          row.forEach(cell => {
+            const td = document.createElement(index === 0 ? "th" : "td");
+            td.textContent = cell;
+            tr.appendChild(td);
+          });
+          tbody.appendChild(tr);
+        });
+      } catch (error) {
+        console.error("Error al obtener los datos:", error);
+      }
+    };
+
+    // Llama a la función para cargar los datos
+    fetchData();
+
+    // Actualiza los datos cada 30 segundos
+    setInterval(fetchData, 30000);
+  </script>
+</body>
+</html>
