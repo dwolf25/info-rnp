@@ -1,0 +1,66 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+  }
+  .container {
+    width: 95%;
+    margin: 20px auto;
+    text-align: center;
+  }
+  .contenedor-navegacion{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: forestgreen;
+  }
+  .logo{
+    width: 4rem;
+    
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+  }
+  table th, table td {
+    border: 3px solid #4b4b4b;
+    padding: 5px;
+    text-align: center;
+    font-size: 0.8rem;
+    font-weight: 600;
+    vertical-align: middle;
+    max-width: 20rem;
+    overflow: hidden;
+  }
+  table th {
+    background-color: #61c43a;
+  }
+  .true-circle {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: green;
+    margin: auto;
+  }
+  .false-circle {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: red;
+    margin: auto;
+  }
+ 
+  .center-text {
+    text-align: center; /* Centra horizontalmente */
+    vertical-align: middle; /* Centra verticalmente */
+    color: white;
+    
+    font-size: 2rem;
+  }
+  /* Estilo para los títulos de la fila 3 */
+  .column-title {
+    background-color: #9cd8a4; /* Fondo diferente para la fila 3 */
+  }
