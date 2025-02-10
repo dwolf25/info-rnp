@@ -1,113 +1,108 @@
 const sheetId = "1Vxos6DxnA54F_mXPX1WdiXzfx-CDYFWX-M7nnwNqpQ8"; // ID de la hoja
-    const sheetName = "PruebaJonas"; // Nombre de la pestaña codificado
-    const apiKey = "AIzaSyDb5CuFLvb3YJLIPBaU1Gbs_y8oIURShLU"; // Reemplázalo con tu clave de API
+const sheetName = "Monolab%2FMarchesini"; // Nombre de la pestaña codificado
+const apiKey = "AIzaSyDb5CuFLvb3YJLIPBaU1Gbs_y8oIURShLU"; // Reemplázalo con tu clave de API
 
-    const fetchData = async () => {
-      try {
-        const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${sheetName}!A1:Z18?key=${apiKey}`;
-        const response = await fetch(url);
-        const data = await response.json();
 
-        if (!data.values) {
-          console.error("No se encontraron datos. Revisa el nombre de la pestaña o los permisos.");
-          return;
-        }
+const fetchData = async () => {
+  try {
+    const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${sheetName}!C1:T12?key=${apiKey}`;
+    const response = await fetch(url);
+    const data = await response.json();
 
-        const rows = data.values;
-        const table = document.getElementById("data-table");
-        table.innerHTML = ""; // Limpiar contenido
+    if (!data.values) {
+      console.error("No se encontraron datos. Revisa el nombre de la pestaña o los permisos.");
+      return;
+    }
 
-        const maxColumns = rows.reduce((max, row) => Math.max(max, row.length), 0);
+    const rows = data.values.map(row => row.filter((_, colIndex) => colIndex < 8 || colIndex > 9)); // Excluir K y L
+    const table = document.getElementById("data-table");
+    table.innerHTML = ""; // Limpiar contenido
 
-        rows.forEach((row, rowIndex) => {
-          const tr = document.createElement("tr");
+    const maxColumns = rows.reduce((max, row) => Math.max(max, row.length), 0);
 
-          if (rowIndex === 0 || rowIndex === 1) {
-            for (let colIndex = 0; colIndex < maxColumns; colIndex++) {
-              const td = document.createElement(rowIndex === 0 ? "th" : "td");
+    rows.forEach((row, rowIndex) => {
+      const tr = document.createElement("tr");
 
-              if (colIndex === 0 && rowIndex === 0) {
-                // Combina de A1 a I1
-                td.setAttribute("colspan", "9");
-                td.classList.add("center-text");
-                td.textContent = row[0] || "";
-                tr.appendChild(td);
-                colIndex += 8; // Salta las columnas ya combinadas
-              } else if (colIndex === 9 && rowIndex === 0) {
-                // Combina de J1 a R1
-                td.setAttribute("colspan", "9");
-                td.classList.add("center-text");
-                td.textContent = row[9] || "";
-                tr.appendChild(td);
-                colIndex += 8; // Salta las columnas ya combinadas
-              } else if (colIndex === 0 && rowIndex === 1) {
-                // Combina de A2 a I2
-                td.setAttribute("colspan", "9");
-                td.classList.add("center-text");
-                td.textContent = row[0] || "";
-                tr.appendChild(td);
-                colIndex += 8; // Salta las columnas ya combinadas
-              } else if (colIndex === 9 && rowIndex === 1) {
-                // Combina de J2 a R2
-                td.setAttribute("colspan", "9");
-                td.classList.add("center-text");
-                td.textContent = row[9] || "";
-                tr.appendChild(td);
-                colIndex += 8; // Salta las columnas ya combinadas
-              } else {
-                td.textContent = row[colIndex] || ""; // Inserta texto para otras celdas
-                tr.appendChild(td);
-              }
-            }
-          } else if (rowIndex === 2) {
-            // Fila 3: aplicar fondo diferente para los títulos
-            for (let colIndex = 0; colIndex < maxColumns; colIndex++) {
-              const td = document.createElement("th");
-              td.classList.add("column-title"); // Aplicar fondo a la fila 3
-              td.textContent = row[colIndex] || ""; // Inserta texto de las celdas
-              tr.appendChild(td);
-            }
+      if (rowIndex === 0) {
+        for (let colIndex = 0; colIndex < maxColumns; colIndex++) {
+          const td = document.createElement("th");
+
+          if (colIndex === 0) {
+            // Combinar C1:J2 (vertical y horizontalmente)
+            td.setAttribute("colspan", "8");
+            td.setAttribute("rowspan", "2");
+            td.classList.add("center-text");
+            td.textContent = row[colIndex] || "";
+            tr.appendChild(td);
+            colIndex += 7;
+          } else if (colIndex === 8) {
+            // Combinar M1:T2 (vertical y horizontalmente)
+            td.setAttribute("colspan", "8");
+            td.setAttribute("rowspan", "2");
+            td.classList.add("center-text");
+            td.textContent = row[colIndex] || "";
+            tr.appendChild(td);
+            colIndex += 7;
           } else {
-            // Rellenar filas normales
-            for (let colIndex = 0; colIndex < maxColumns; colIndex++) {
-              const cell = row[colIndex] || ""; // Usa un valor vacío si no hay datos
-              const td = document.createElement("td");
+            td.textContent = row[colIndex] || "";
+            tr.appendChild(td);
+          }
+        }
+      } else if (rowIndex === 1) {
+        // Omitir C2:J2 y M2:T2 porque ya están combinadas con rowspan
+      } else if (rowIndex === 2) {
+        for (let colIndex = 0; colIndex < maxColumns; colIndex++) {
+          const td = document.createElement("th");
+          td.classList.add("column-title");
+          td.textContent = row[colIndex] || "";
+          tr.appendChild(td);
+        }
+      } else {
+        for (let colIndex = 0; colIndex < maxColumns; colIndex++) {
+          const cell = row[colIndex] || "";
+          const td = document.createElement("td");
 
-              // Aplicar el fondo según el valor de la celda
-              if (cell.startsWith("R:")) {
-                td.style.backgroundColor = "red"; // Fondo rojo si empieza con "R:"
-              } else if (cell.startsWith("M:")) {
-                td.style.backgroundColor = "yellow"; // Fondo amarillo si empieza con "M:"
-              }
-              else if (cell.startsWith("--")){
-                td.style.backgroundColor = "orange"; // fondo naranja
-              }
-              else if (cell.startsWith("A:")){
-                td.style.backgroundColor = "#3ce7fd";
-              }
-
-              // Comprobación de si el valor de la celda es TRUE o FALSE
-              if (cell === "TRUE") {
-                td.innerHTML = '<div class="true-circle"></div>'; // Circunferencia verde
-              } else if (cell === "FALSE") {
-                td.innerHTML = '<div class="false-circle"></div>'; // Circunferencia roja
-              } else {
-                td.textContent = cell; // Inserta el texto de la celda
-              }
-
-              tr.appendChild(td);
-            }
+          if (cell.startsWith("R:")) {
+            td.style.backgroundColor = "red";
+          } else if (cell.startsWith("M:")) {
+            td.style.backgroundColor = "yellow";
+          } else if (cell.startsWith("--")) {
+            td.style.backgroundColor = "orange";
+          } else if (cell.startsWith("A:")) {
+            td.style.backgroundColor = "#3ce7fd";
+          }
+          else if (cell.startsWith("-SI-")){
+            td.style.backgroundColor = "red";
+            td.style.color = "white";
+          
+          }
+          else if (cell.startsWith("-NO-")){
+            td.style.backgroundColor = "green";
+            td.style.color = "white";
+          
           }
 
-          table.appendChild(tr);
-        });
-      } catch (error) {
-        console.error("Error al obtener los datos:", error);
+          if (cell === "TRUE") {
+            td.innerHTML = '<div class="true-circle"></div>';
+          } else if (cell === "FALSE") {
+            td.innerHTML = '<div class="false-circle"></div>';
+          } else {
+            td.textContent = cell;
+          }
+
+          tr.appendChild(td);
+        }
       }
-    };
 
-    // Llama a la función para cargar los datos
-    fetchData();
+      table.appendChild(tr);
+    });
+  } catch (error) {
+    console.error("Error al obtener los datos:", error);
+  }
+};
 
-    // Actualiza los datos cada 30 segundos
-    setInterval(fetchData, 10000);
+// Llama a la función para cargar los datos
+fetchData();
+
+// Actualiza los datos cada 30 segundos
+setInterval(fetchData, 10000);

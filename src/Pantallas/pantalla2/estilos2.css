@@ -1,0 +1,126 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+  }
+  .container {
+    width: 95%;
+    margin: 20px auto;
+    text-align: center;
+    min-width: 300px; /* Añadir un tamaño mínimo al contenedor */
+    min-height: 200px; /* Añadir un tamaño mínimo al contenedor */
+  }
+  .contenedor-navegacion{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: forestgreen;
+  }
+  .logo{
+    width: 4rem;
+    
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    min-width: 500px; /* Añadir un tamaño mínimo para la tabla */
+  }
+  table th, table td {
+    border: 3px solid #4b4b4b;
+    padding: 5px;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 600;
+    vertical-align: middle;
+    max-width: 1rem; /* Se puede eliminar o modificar si es necesario */
+    max-height: 3rem;
+    min-width: 2rem;
+    height: 2rem;
+    overflow: hidden;
+  }
+  table th {
+    background-color: #61c43a;
+  }
+  
+  .center-text {
+    text-align: center; /* Centra horizontalmente */
+    vertical-align: middle; /* Centra verticalmente */
+    color: white;
+    
+    font-size: 2rem;
+  }
+  /* Estilo para los títulos de la fila 3 */
+  .column-title {
+    background-color: #9cd8a4; /* Fondo diferente para la fila 3 */
+  }
+
+  /* 🔹 MEDIA QUERIES para adaptar a 4K (3840x2160) */
+@media screen and (min-width: 3840px) {
+  body {
+      font-size: 1.5rem; /* Ajuste del tamaño de fuente */
+  }
+
+  .container {
+      max-width: 90%;
+      margin: 40px auto;
+  }
+
+  .logo {
+      width: 6rem; /* Escalar el logo */
+  }
+
+  table {
+      min-width: 1200px; /* Hacer la tabla más grande */
+  }
+
+  table th, table td {
+      font-size: 1.5rem; /* Aumentar la fuente */
+      padding: 10px;
+      height: 3rem;
+  }
+
+  .center-text {
+      font-size: 2.5rem; /* Ajustar títulos */
+  }
+}
+
+/* 🔹 MEDIA QUERIES para resoluciones menores (Full HD, 1080p) */
+@media screen and (max-width: 1920px) {
+  .container {
+      width: 98%;
+  }
+
+  .logo {
+      width: 3rem;
+  }
+
+  table th, table td {
+      font-size: 0.9rem;
+      padding: 4px;
+  }
+}
+
+/* 🔹 MEDIA QUERIES para móviles (hasta 768px) */
+@media screen and (max-width: 768px) {
+  .contenedor-navegacion {
+      flex-direction: column;
+      gap: 0.5rem;
+  }
+
+  .logo {
+      width: 2.5rem;
+  }
+
+  table {
+      min-width: 100%;
+      font-size: 0.8rem;
+  }
+
+  table th, table td {
+      padding: 3px;
+      font-size: 0.8rem;
+  }
+}
