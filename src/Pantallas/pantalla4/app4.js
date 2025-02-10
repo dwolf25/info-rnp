@@ -1,6 +1,6 @@
 const sheetId = "1Vxos6DxnA54F_mXPX1WdiXzfx-CDYFWX-M7nnwNqpQ8";
 const sheetName = "Liquidos%2FDoypack";
-const apiKey = "AIzaSyDb5CuFLvb3YJLIPBaU1Gbs_y8oIURShLU";
+import { apiKey } from "../app.inicio.pantallas.js";
 
 let rangeIndex = 0;
 const ranges = ["D1:R12", "D26:R35"];

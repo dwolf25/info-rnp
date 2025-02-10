@@ -1,6 +1,6 @@
 const sheetId = "1Vxos6DxnA54F_mXPX1WdiXzfx-CDYFWX-M7nnwNqpQ8";
 const sheetName = "Sobres%2FPolvo%2FStick%2FManuales";
-const apiKey = "AIzaSyDb5CuFLvb3YJLIPBaU1Gbs_y8oIURShLU";
+import { apiKey } from "../app.inicio.pantallas.js";
 
 const ranges = ["D1:T12", "D27:T38", "N39:T50"];
 let currentRangeIndex = 0;

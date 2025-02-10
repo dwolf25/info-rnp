@@ -1,6 +1,6 @@
 const sheetId = "1Vxos6DxnA54F_mXPX1WdiXzfx-CDYFWX-M7nnwNqpQ8"; // ID de la hoja
 const sheetName = "Cremer%2FTecnomaco"; // Nombre de la pestaña codificado
-const apiKey = "AIzaSyDb5CuFLvb3YJLIPBaU1Gbs_y8oIURShLU"; // Reemplázalo con tu clave de API
+import { apiKey } from "../app.inicio.pantallas.js";
 const ColorLetra = document.querySelector(".color-letra");
 const fetchData = async () => {
   try {
