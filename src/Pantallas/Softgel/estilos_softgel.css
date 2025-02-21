@@ -1,0 +1,167 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Contenedor principal */
+  .container {
+    width: 95%;
+    margin: 20px auto;
+    text-align: center;
+    min-width: 400px;
+    max-height: 200px;
+  }
+  
+  /* Barra de navegación */
+  .contenedor-navegacion {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: forestgreen;
+  }
+  
+  /* Logo */
+  .logo {
+    width: 4rem;
+  }
+  
+  /* Tabla */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    min-width: 500px;
+  }
+  
+  table th, table td {
+    border: 3px solid #4b4b4b;
+    padding: 5px;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 600;
+    vertical-align: middle;
+    max-width: 1rem;
+    max-height: 3rem;
+    height: 2rem;
+    overflow: hidden;
+  }
+  
+  table th {
+    background-color: #61c43a;
+  }
+  
+  /* Texto centrado */
+  .center-text {
+    text-align: center;
+    vertical-align: middle;
+    color: white;
+    font-size: 2rem;
+  }
+  
+  /* Estilo para los títulos de la fila 3 */
+  .column-title {
+    background-color: #9cd8a4;
+  }
+  
+  /* 🔹 MEDIA QUERIES para adaptar a 4K (3840x2160) */
+  @media screen and (min-width: 3840px) {
+    body {
+        font-size: 1.5rem; /* Ajuste del tamaño de fuente */
+    }
+  
+    .container {
+        max-width: 90%;
+        margin: 40px auto;
+    }
+  
+    .logo {
+        width: 6rem; /* Escalar el logo */
+    }
+  
+    table {
+        min-width: 1200px; /* Hacer la tabla más grande */
+    }
+  
+    table th, table td {
+        font-size: 1.5rem; /* Aumentar la fuente */
+        padding: 10px;
+        height: 3rem;
+    }
+  
+    .center-text {
+        font-size: 2.5rem; /* Ajustar títulos */
+    }
+  }
+  
+  /* 🔹 MEDIA QUERIES para resoluciones menores (Full HD, 1080p) */
+  @media screen and (max-width: 1920px) {
+    .container {
+        width: 98%;
+    }
+  
+    .logo {
+        width: 3rem;
+    }
+  
+    table th, table td {
+        font-size: 0.9rem;
+        padding: 4px;
+    }
+  }
+  
+  /* 🔹 MEDIA QUERIES para móviles (hasta 768px) */
+  @media screen and (max-width: 768px) {
+    .contenedor-navegacion {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+  
+    .logo {
+        width: 2.5rem;
+    }
+  
+    table {
+        min-width: 100%;
+        font-size: 0.8rem;
+    }
+  
+    table th, table td {
+        padding: 3px;
+        font-size: 0.8rem;
+    }
+  }
+  
+  /* Estilos para el contenedor de estado de conexión */
+.estado-conexion-container {
+    margin: 15px 0;
+    text-align: left;
+  }
+  
+  #estado-conexion {
+    padding: 10px;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    border-left: 4px solid #cccccc;
+  }
+  .navegador{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    gap: 1rem;
+    padding: 1rem;
+    overflow: hidden;
+    display: flex;
+    
+  }
+  .subtitulo{
+    font-size: 2rem;
+    font-weight: 700;
+    color: forestgreen;
+    letter-spacing: 5px;
+  }
+
+  

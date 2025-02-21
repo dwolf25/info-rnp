@@ -3,12 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="estilos4.css">
+  <link rel="stylesheet" href="estilos_softgel.css">
   <link rel="shortcut icon" href="../../../assets/favicon.ico" type="image/x-icon">
   <title>Info-Rnp</title>
-  <style>
-    
-  </style>
+  <!-- Google API Libraries -->
+  
 </head>
 <body>
   <div class="container">
@@ -16,18 +15,22 @@
         <div class="contenedor-titulo">
             <h1>Planificación</h1>
         </div>
-        <nav><a href="../../Pantallas/inicio-pantallas.html"><img class="logo" src="../../../assets/logo-naturepharma copy.png" alt="imagen-rnp"></a></nav>
+        <nav class="navegador"><a href="../../menu/inicio-pantallas.html"><img class="logo" src="../../../assets/logo-naturepharma copy.png" alt="imagen-rnp"></a>
+        <span class="subtitulo">SOFTGEL</span></nav>
     </div>
     
+    <div class="estado-conexion-container">
+      <div id="estado-conexion">Inicializando conexión...</div>
+    </div>
     
     <table id="data-table">
       <!-- Contenido dinámico -->
     </table>
   </div>
 
-  <script type="module" src="app4.js"></script>
+  <script type="module" src="app_softgel.js"></script>
   <!-- <script src="../../../Mantenimiento.js"></script> -->
-  <script src="../../../WebSockets.js"></script>
-  <script type="module" src="../app.inicio.pantallas.js"></script>
+  <script type="module" src="../api_key.js"></script>
+ >
 </body>
 </html>

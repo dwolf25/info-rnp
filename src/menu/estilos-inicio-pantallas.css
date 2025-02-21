@@ -9,6 +9,8 @@ body{
     width: 100px;
     height: 100px;
     position: absolute;
+    margin: 20px 20px;
+    
 }
 .contenedor-padre{
     width: 100%;
@@ -25,22 +27,18 @@ body{
     padding: 1rem;
     overflow: hidden;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 .contenedor-cartas{
-    width: 100%;
-    height: 50vh;
-    height: 50vh;
-    display: grid;
-        overflow: hidden;
-        gap: 5rem;
-        justify-content: center;
-        align-content: center;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-
-        grid-auto-flow: column;
-        
+    width: 70%;
+    height: 12h;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem   ;
+    margin: 70px;
         
 }
 .carta{
@@ -49,8 +47,6 @@ body{
     min-height: 15rem;
     min-width: 10rem;
     max-width: 20rem;
-    width: 100%;
-    height: 100%;
     min-height: 15rem;
     min-width: 10rem;
     max-width: 20rem;
@@ -111,6 +107,10 @@ body{
         max-width: 10rem;
         min-height: 5rem;
         max-height: 4rem;
+        
+    }
+    .carta span{
+        font-size: 1.5rem;
     }
 }
 /* Media Queries para ajustar el diseño en diferentes pantallas */
@@ -152,6 +152,9 @@ body{
     }
 
     .carta span {
-        font-size: 2rem; /* Texto más pequeño */
+        font-size: 1rem; /* Texto más pequeño */
     }
+}
+span{
+    max-width: 65ch;
 }

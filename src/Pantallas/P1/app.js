@@ -1,7 +1,8 @@
 const sheetId = "1Vxos6DxnA54F_mXPX1WdiXzfx-CDYFWX-M7nnwNqpQ8"; // ID de la hoja
-const sheetName = "Cremer%2FTecnomaco"; // Nombre de la pestaña codificado
-import { apiKey } from "../app.inicio.pantallas.js";
-const ColorLetra = document.querySelector(".color-letra");
+const sheetName = "Monolab%2FMarchesini"; // Nombre de la pestaña codificado
+ import { apiKey } from "../api_key.js";
+
+
 const fetchData = async () => {
   try {
     const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${sheetName}!C1:T12?key=${apiKey}`;
@@ -13,7 +14,7 @@ const fetchData = async () => {
       return;
     }
 
-    const rows = data.values.map(row => row.filter((_, colIndex) => colIndex < 7 || colIndex > 8)); // Excluir K y L
+    const rows = data.values.map(row => row.filter((_, colIndex) => colIndex < 8 || colIndex > 9)); // Excluir K y L
     const table = document.getElementById("data-table");
     table.innerHTML = ""; // Limpiar contenido
 
@@ -28,20 +29,20 @@ const fetchData = async () => {
 
           if (colIndex === 0) {
             // Combinar C1:J2 (vertical y horizontalmente)
-            td.setAttribute("colspan", "7");
+            td.setAttribute("colspan", "8");
             td.setAttribute("rowspan", "2");
             td.classList.add("center-text");
             td.textContent = row[colIndex] || "";
             tr.appendChild(td);
-            colIndex += 6;
-          } else if (colIndex === 7) {
+            colIndex += 7;
+          } else if (colIndex === 8) {
             // Combinar M1:T2 (vertical y horizontalmente)
-            td.setAttribute("colspan", "7");
+            td.setAttribute("colspan", "8");
             td.setAttribute("rowspan", "2");
             td.classList.add("center-text");
             td.textContent = row[colIndex] || "";
             tr.appendChild(td);
-            colIndex += 6;
+            colIndex += 7;
           } else {
             td.textContent = row[colIndex] || "";
             tr.appendChild(td);
