@@ -4,63 +4,71 @@ body {
   margin: 0;
   padding: 0;
 }
+
+/* Contenedor principal */
 .container {
   width: 95%;
   margin: 20px auto;
   text-align: center;
-  min-width: 300px; /* Añadir un tamaño mínimo al contenedor */
-  min-height: 200px; /* Añadir un tamaño mínimo al contenedor */
+  min-width: 400px;
+  max-height: 200px;
 }
-.contenedor-navegacion{
+
+/* Barra de navegación */
+.contenedor-navegacion {
   width: 100%;
   display: flex;
   align-items: center;
   gap: 1rem;
   color: forestgreen;
 }
-.logo{
+
+/* Logo */
+.logo {
   width: 4rem;
-  
 }
+
+/* Tabla */
 table {
   width: 100%;
   border-collapse: collapse;
   margin: 20px 0;
-  min-width: 500px; /* Añadir un tamaño mínimo para la tabla */
+  min-width: 95rem;
 }
-/* Efecto de transición para suavizar los cambios */
-
 
 table th, table td {
   border: 3px solid #4b4b4b;
-  padding: 5px;
+  padding: 1px;
   text-align: center;
-  font-size: 1rem;
+  font-size: 0.8rem;
   font-weight: 600;
   vertical-align: middle;
-  max-width: 1rem; /* Se puede eliminar o modificar si es necesario */
+  max-width: 1rem;
   max-height: 3rem;
-  min-width: 2rem;
+  min-height: 2rem;
+  min-width: 3rem;
   height: 2rem;
   overflow: hidden;
 }
+
 table th {
   background-color: #61c43a;
 }
 
-
+/* Texto centrado */
 .center-text {
-  text-align: center; /* Centra horizontalmente */
-  vertical-align: middle; /* Centra verticalmente */
+  text-align: center;
+  vertical-align: middle;
   color: white;
-  
   font-size: 2rem;
 }
+
 /* Estilo para los títulos de la fila 3 */
 .column-title {
-  background-color: #9cd8a4; /* Fondo diferente para la fila 3 */
+  background-color: #9cd8a4;
 }
 
+/* 🔹 MEDIA QUERIES para adaptar a 4K (3840x2160) */
 @media screen and (min-width: 3840px) {
   body {
       font-size: 1.5rem; /* Ajuste del tamaño de fuente */
@@ -76,13 +84,13 @@ table th {
   }
 
   table {
-      min-width: 1200px; /* Hacer la tabla más grande */
+      min-width: 1000px; /* Hacer la tabla más grande */
   }
 
   table th, table td {
-      font-size: 1.5rem; /* Aumentar la fuente */
+      font-size: 2rem; /* Aumentar la fuente */
       padding: 10px;
-      height: 3rem;
+      height: 2rem;
   }
 
   .center-text {
@@ -101,9 +109,16 @@ table th {
   }
 
   table th, table td {
-      font-size: 0.9rem;
-      padding: 4px;
+      font-size: 0.8rem;
+      padding: 2px;
+      height: 2rem;
   }
+  table {
+    min-width: 100%;
+  
+    /* font-size: 0.8rem; */
+}
+  
 }
 
 /* 🔹 MEDIA QUERIES para móviles (hasta 768px) */

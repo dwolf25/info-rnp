@@ -2,7 +2,7 @@ const sheetId = "1Vxos6DxnA54F_mXPX1WdiXzfx-CDYFWX-M7nnwNqpQ8";
 const sheetName = "Sobres%2FPolvo%2FStick%2FManuales";
 import { apiKey } from "../api_key.js";
 
-const ranges = ["D1:T12", "D30:T40", "N42:T54"];
+const ranges = ["D1:T12", "D36:T46", "N48:T60"];
 let currentRangeIndex = 0;
 
 const fetchData = async () => {
@@ -18,7 +18,7 @@ const fetchData = async () => {
     }
 
     // Identificar si estamos en el rango N39:T57
-    const isLastRange = range === "N42:T54";
+    const isLastRange = range === "N48:T60";
     
     // Filtrar las columnas K, L, M
     const rows = data.values.map(row => {

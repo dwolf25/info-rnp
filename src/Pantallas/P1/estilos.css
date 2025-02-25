@@ -33,18 +33,20 @@ table {
   width: 100%;
   border-collapse: collapse;
   margin: 20px 0;
-  min-width: 500px;
+  min-width: 95rem;
 }
 
 table th, table td {
   border: 3px solid #4b4b4b;
-  padding: 5px;
+  padding: 1px;
   text-align: center;
-  font-size: 1rem;
+  font-size: 0.8rem;
   font-weight: 600;
   vertical-align: middle;
   max-width: 1rem;
   max-height: 3rem;
+  min-height: 2rem;
+  min-width: 3rem;
   height: 2rem;
   overflow: hidden;
 }
@@ -82,13 +84,13 @@ table th {
   }
 
   table {
-      min-width: 1200px; /* Hacer la tabla más grande */
+      min-width: 1000px; /* Hacer la tabla más grande */
   }
 
   table th, table td {
-      font-size: 1.5rem; /* Aumentar la fuente */
+      font-size: 2rem; /* Aumentar la fuente */
       padding: 10px;
-      height: 3rem;
+      height: 2rem;
   }
 
   .center-text {
@@ -107,9 +109,16 @@ table th {
   }
 
   table th, table td {
-      font-size: 0.9rem;
-      padding: 4px;
+      font-size: 0.8rem;
+      padding: 2px;
+      height: 2rem;
   }
+  table {
+    min-width: 100%;
+  
+    /* font-size: 0.8rem; */
+}
+  
 }
 
 /* 🔹 MEDIA QUERIES para móviles (hasta 768px) */
